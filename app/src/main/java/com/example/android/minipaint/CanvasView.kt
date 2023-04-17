@@ -1,26 +1,23 @@
 package com.example.android.minipaint
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import androidx.core.content.res.ResourcesCompat
+import kotlin.math.abs
 
-private const val STROKE_WIDTH = 12f // has to be float
+private const val STROKE_WIDTH = 12f
 
-class MyCanvasView(context: Context) : View(context) {
+class CanvasView(context: Context) : View(context) {
 
-
-    // this is a way to store the cached drawing path
-    // There is another way to do so
-    // It will be found in the lesson drawing on canvas object
     private lateinit var extraCanvas : Canvas
     private lateinit var extraBitmap: Bitmap
 
     private val backgroundColor = ResourcesCompat.getColor(resources, R.color.colorBackground, null)
 
-    // For Painting object
     private val drawColor = ResourcesCompat.getColor(resources, R.color.colorPaint, null)
 
     // Set up the paint with which to draw.
@@ -30,10 +27,10 @@ class MyCanvasView(context: Context) : View(context) {
         isAntiAlias = true
         // Dithering affects how colors with higher-precision than the device are down-sampled.
         isDither = true
-        style = Paint.Style.STROKE // default: FILL
-        strokeJoin = Paint.Join.ROUND // default: MITER
-        strokeCap = Paint.Cap.ROUND // default: BUTT
-        strokeWidth = STROKE_WIDTH // default: Hairline-width (really thin)
+        style = Paint.Style.STROKE
+        strokeJoin = Paint.Join.ROUND
+        strokeCap = Paint.Cap.ROUND
+        strokeWidth = STROKE_WIDTH
     }
 
     // Setting the path object to determine what is drawn on screen when user touches it
@@ -70,7 +67,6 @@ class MyCanvasView(context: Context) : View(context) {
 
     }
 
-    // Override onDraw()
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
@@ -81,6 +77,7 @@ class MyCanvasView(context: Context) : View(context) {
     }
 
     // Overriding onTouchEvent Method When user touches on screen
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
         motionTouchEventX = event.x
         motionTouchEventY = event.y
@@ -94,7 +91,6 @@ class MyCanvasView(context: Context) : View(context) {
         return true
     }
 
-    // touchStart()
     private fun touchStart() {
         path.reset()
         path.moveTo(motionTouchEventX, motionTouchEventY)
@@ -105,8 +101,8 @@ class MyCanvasView(context: Context) : View(context) {
     // touchMove()
     private fun touchMove() {
         // Calculate the distance that has been moved
-        val dx = Math.abs(motionTouchEventX - currentX)
-        val dy = Math.abs(motionTouchEventY - currentY)
+        val dx = abs(motionTouchEventX - currentX)
+        val dy = abs(motionTouchEventY - currentY)
 
         // If the move was further than the touch tolerance, draw otherwise don't
         if (dx >= touchTolerance || dy >= touchTolerance) {
@@ -121,11 +117,9 @@ class MyCanvasView(context: Context) : View(context) {
         invalidate()
     }
 
-    // touchUp()
     private fun touchUp() {
         // Reset the path so it doesn't get drawn again.
         path.reset()
     }
-
 
 }

@@ -8,6 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorBackground">#FFFF5500</color>
-    <color name="colorPaint">#FFFFEB3B</color>
+    <color name="colorBackground">#0535E4</color>
+    <color name="colorPaint">#FFFFFF</color>
 </resources>

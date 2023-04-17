@@ -3,7 +3,7 @@
 
 This is an Android application that allows you to draw any shapes on the screen using your fingers.
 
-##Screenshots
+## Screenshots
 
 <div>
 <img src="https://user-images.githubusercontent.com/112197330/232521625-8386f5fb-b124-4d70-895a-12d12fedef46.png" width = "250"/>

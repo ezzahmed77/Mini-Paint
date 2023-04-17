@@ -5,7 +5,9 @@ This is an Android application that allows you to draw any shapes on the screen 
 
 ##Screenshots
 
-<img src = "https://user-images.githubusercontent.com/112197330/232519563-30ef88cb-b3d3-43a1-8202-0dff55ec76b8.png"/>
+<div>
+<img src="https://user-images.githubusercontent.com/112197330/232521625-8386f5fb-b124-4d70-895a-12d12fedef46.png" width = "250"/>
+</div>
 
 ## Features
 
